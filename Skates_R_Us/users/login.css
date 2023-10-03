@@ -20,7 +20,11 @@
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
   }
-  
+  .imgcontainer{
+    max-width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+  }
   /* The Close Button */
   .close {
     /* Position it in the top right corner outside of the modal */

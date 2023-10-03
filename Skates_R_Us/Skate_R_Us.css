@@ -29,18 +29,24 @@ p.inset {border-style: inset;}
   }
 body{
   
-    background-color: #830f0f;
+    background-color: #85e47c46;
 }
 
 h1 {
     color: #595f39;
 }
 
-
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 
 .button {
   border: none;
-  color: rgb(255, 255, 255);
+  color: rgba(148, 216, 139, 0.664);
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
@@ -52,13 +58,13 @@ h1 {
 }
 
 .button1 {
-  background-color: rgb(235, 23, 23);
+  background-color: rgba(23, 235, 76, 0.719);
   color: black;
   border: 2px solid #4CAF50;
 }
 
 .button1:hover {
-  background-color: #4CAF50;
+  background-color: #026905;
   color: white;
 }
 
