@@ -8,11 +8,37 @@ https://www.quackit.com/html/codes/
 */
 
 
-
+.header{
+  padding: 5px;
+}
 .navbar{
   display: flex;
-  align-items: center;
+  align-items: right;
   padding: 20px;
+}
+.col-4{
+  flex-basis: 25%;
+  padding: 0px;
+  min-width: 30px;
+  margin-bottom: 0px;
+  transition: transform 0.5s;
+  
+  
+  
+}
+.widthSet{
+  max-height: 200px;
+}
+.col-4 img{
+  width: 100%;
+}
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
 }
 nav{
   flex: 1;
@@ -21,11 +47,14 @@ nav{
 nav ul{
   display: inline-block;
   list-style-type: none;
+  
 }
 nav ul li{
   display: inline-block;
   margin-right: 20px;
+  
 }
+
 a{
   text-decoration: none;
   color: #555;
@@ -33,9 +62,10 @@ a{
 p{
   color: #555;
 }
+
 .container{
   max-width: 1300px;
-  margin: auto;
+  margin: left;
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -44,9 +74,18 @@ p{
   background: #008CBA;
   color: white;
   padding: 8px 30px;
-  margin: 30px 0;
+  margin: 3px 0;
   border-radius: 30px;
   transition: background 0.2s;
+}
+h1 {
+  font-family: 'Poppins', sans-serif;
+    color: #242424;
+    float: left;
+    margin-top: 15px;
+}
+.logo{
+  float: left;
 }
 .categories{
   margin: 70px 0;
@@ -69,15 +108,28 @@ p{
   padding-left: 25px;
   padding-right: 25px;
 }
+.col-2{
+flex-basis: 50%;
+  padding-left: 30px;
+  min-width: 200px;
+  min-height: 200px;
+  margin-bottom: 50px;
+  
+}
 .col-4{
   flex-basis: 25%;
   padding: 5px;
   min-width: 200px;
+  min-height: 200px;
   margin-bottom: 50px;
   transition: transform 0.5s;
 }
 .col-4 img{
   width: 100%;
+  object-fit: cover;
+}
+.widthSet{
+  max-height: 200px;
 }
 .col-4:hover{
   transform: translateY(-5px);
@@ -102,12 +154,16 @@ p.inset {border-style: inset;}
   }
 body{
     
-    background-color: #E4E4DE;
+    background-color: #477651;
 }
 
 h1 {
   font-family: 'Poppins', sans-serif;
     color: #000000;
+    float: right;
+    margin-top: 35px;
+    padding-left: 10px;
+    
 }
 
 .vertical-center {
