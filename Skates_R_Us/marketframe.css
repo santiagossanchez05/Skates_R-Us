@@ -1,6 +1,6 @@
 .container {
   overflow: hidden;
-  
+  float: auto;
 }
 
 .header{
@@ -112,11 +112,12 @@ nav{
 nav ul{
   display: inline-block;
   list-style-type: none;
+  
 }
 nav ul li{
   display: inline-block;
   text-align: left;
-  margin-right: 20px;
+  margin-right: 0px;
 }
 .col-4{
   flex-basis: 25%;
@@ -124,15 +125,13 @@ nav ul li{
   min-width: 30px;
   margin-bottom: 0px;
   transition: transform 0.5s;
-  
-  
-  
 }
 .widthSet{
   max-height: 200px;
 }
 .col-4 img{
   width: 100%;
+  object-fit: cover;
 }
 /* Style the buttons */
 .btn {
@@ -140,6 +139,14 @@ nav ul li{
   outline: none;
   padding: 12px 16px;
   background-color: #f1f1f1;
+  cursor: pointer;
+}
+.btn2 {
+  border: none;
+  pointer-events: none;
+  outline: none;
+  padding: 12px 300px;
+  background-color: #ffffff;
   cursor: pointer;
 }
 a{
