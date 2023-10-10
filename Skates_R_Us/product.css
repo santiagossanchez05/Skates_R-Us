@@ -69,12 +69,14 @@
   .col-2{
     flex-basis: 50%;
     padding-top: 5px;
-      
-      min-width: 200px;
+    
+      min-width: 500px;
       min-height: 200px;
       margin-bottom: 50px;
       
   }    
+
+
   .col-4{
     flex-basis: 100%;
     padding: 20px;
@@ -82,34 +84,38 @@
     margin-bottom: 0px;
     transition: transform 0.5s;
     
-    
-    
+  
   }
  
   .col-4:hover{
     transform: translateY(-5px);
   }
   .widthSet{
-    max-height: 200px;
+    max-height: 2000px;
   }
   .col-4 img{
     width: 100%;
     object-fit: cover
   }
-
+  
   .single-product{
     margin-top: 80px;
   }
   .single-product .col-2 img{
     padding: 0;
+    size: 1000px;
   }
   .single-product .col-2 {
     padding: 20px;
   }
   .single-product h4{
+    padding: 40px;
     margin: 0px;
     font-size: 22px;
     font-weight: bold;
+    position: relative;
+    bottom: -55px;
+    left: -235px
   }
   .single-product select{
     display: block;
