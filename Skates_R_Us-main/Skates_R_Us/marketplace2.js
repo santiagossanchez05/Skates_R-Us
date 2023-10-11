@@ -3,57 +3,52 @@ const jobs = [
     title: "Nike Shoe",
     image: "https://i.ebayimg.com/images/g/DKgAAOSwdWNkayw4/s-l1200.webp",
     details:"",
-    openPositions: "",
+
     link: "#",
   },
   {
     title: "Vans",
     image: "https://i.pinimg.com/736x/d1/36/2c/d1362cdff7c28b813780a1a29c7b9621.jpg",
     details:"",
-    openPositions: "",
+   
     link: "#",
   },
   {
     title: "idfk",
     image: "https://i.pinimg.com/736x/b8/f7/20/b8f720d952fb7dbe36f1a4e4f1f7091c.jpg",
     details:"",
-    openPositions: "",
+
     link: "#",
   },
   {
     title: "idfk",
     image: "https://i.pinimg.com/736x/b8/f7/20/b8f720d952fb7dbe36f1a4e4f1f7091c.jpg",
     details:"",
-    openPositions: "",
+
     link: "#",
   },
   {
     title: "idfk",
     image: "https://i.pinimg.com/736x/b8/f7/20/b8f720d952fb7dbe36f1a4e4f1f7091c.jpg",
     details:"",
-    openPositions: "",
+
     link: "#",
   },
   {
     title: "idfk",
     image: "https://i.pinimg.com/736x/b8/f7/20/b8f720d952fb7dbe36f1a4e4f1f7091c.jpg",
     details:"",
-    openPositions: "",
+
     link: "#",
   },
   {
     title: "idfk",
     image: "https://i.pinimg.com/736x/b8/f7/20/b8f720d952fb7dbe36f1a4e4f1f7091c.jpg",
     details:"",
-    openPositions: "",
+
     link: "#",
   },
 
-
-
-
-
-  
 ];
 function test(){/* THIS IS WHAT IM TRYING TO DO, in post.htm post has a test() action on click im tryuing to get the info from the post ur listing shit to create a new array element.
   var postname = document.getElementById("name").value;
@@ -92,14 +87,12 @@ function test(){/* THIS IS WHAT IM TRYING TO DO, in post.htm post has a test() a
       detailsBtn.classList.add("details-btn");
 
   
-  jobCard.appendChild(image);
-  jobCard.appendChild(title);
+  jobCard.appendChild(img);
+  jobCard.appendChild(postname);
   jobCard.appendChild(desc);
   jobCard.appendChild(detailsBtn);
 
   jobsContainer.appendChild(jobCard);
-
-
   */
 }
 const jobsHeading = document.querySelector(".jobs-list-container h2");
@@ -107,12 +100,6 @@ const jobsContainer = document.querySelector(".jobs-list-container .jobs");
 const jobSearch = document.querySelector(".jobs-list-container .job-search");
 
 let searchTerm = "";
-
-if (jobs.length == 1) {
-  jobsHeading.innerHTML = `${jobs.length} Listing`;
-} else {
-  jobsHeading.innerHTML = `${jobs.length} Listings`;
-}
 
 const createJobListingCards = () => {
   jobsContainer.innerHTML = "";
@@ -138,21 +125,10 @@ const createJobListingCards = () => {
       detailsBtn.innerHTML = "More Details";
       detailsBtn.classList.add("details-btn");
 
-      let openPositions = document.createElement("span");
-      openPositions.classList.add("open-positions");
-
-      if (job.openPositions == 1) {
-        openPositions.innerHTML = `${job.openPositions} open position`;
-      } else {
-        openPositions.innerHTML = `${job.openPositions} `;
-      }
-
       jobCard.appendChild(image);
       jobCard.appendChild(title);
       jobCard.appendChild(details);
       jobCard.appendChild(detailsBtn);
-      jobCard.appendChild(openPositions);
-
       jobsContainer.appendChild(jobCard);
     }
   });

@@ -3,23 +3,24 @@
 
 
 
-navigation bar:######################################################################
+navigation bar and side bar:######################################################################
 css:>>>>
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Rubik", sans-serif;
+  text-decoration: none;
 }
 
 body{
   min-height: 100vh;
-  background-color: #fffddf;
+  background-color: #ffffff;
 
 }
 .header{
   position: fixed;
-  top: 0;
+  top: 0px;
   left: 0;
   width: 100%;
   padding: 20px 100px;
@@ -57,24 +58,99 @@ body{
   width: 100%;
 }
 
+.sidebar{
+  z-index: 99;
+  padding-top: 55px;
+  position: fixed;
+  left: 0px;
+  width: 250px;
+  height: 100%;
+  background: seagreen;
+}
+.sidebar header{
+  
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  line-height: 70px;
+  background-color: #333;
+  user-select: none;
+}
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 30px;
+  font-size: 20px;
+  color: white;
+  padding-left: 20px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  border-bottom: 1px solid black;
+  transition: .4s;
+
+
+}
+ul li:hover a{
+  padding-left: 50px;
+}
+.sidebar ul a i{
+  margin-right: 16px;
+}
+
 
 html>>>>
 
-<body>
-
-    <header class="header">
-      <a href="#" class="logo">Logo</a>
+<header class="header">
+      <a href="#" class="logo">SkateSole</a>
 
       <nav class="navbar">
         <a href="#">Home</a>
         <a href="#">about</a>
         <a href="#">Post</a>
         <a href="#">Account</a>
+
+
       </nav>
 
     </header>
+    <div class="sidebar">
+      <header>Trades</header>
+      <ul>
+        <li><a href="#"><p class="fas fa-qrcode">Listings</p></a></li>
+        <li><a href="#"><p class="fas fa-link">Buy From Us</p></a></li>
+        <li><a href="#"><p class="fas fa-stream">Support us</p></a></li>
+        <li><a href="#"><p class="fas fa-calendae-week">pls</p></a></li>
+        <li><a href="#"><p class="fas fa-question">we need money</p></a></li>
+        <li><a href="#"><p class="fas fa-sliders-h">plsplsplspls</p></a></li>
+      </ul>
+      <header>Other Shii</header>
+      <ul>
+        <li><a href="#"><p class="fas fa-qrcode">Listings</p></a></li>
+        <li><a href="#"><p class="fas fa-link">Buy From Us</p></a></li>
+        <li><a href="#"><p class="fas fa-stream">Support us</p></a></li>
+        <li><a href="#"><p class="fas fa-calendae-week">pls</p></a></li>
+        <li><a href="#"><p class="fas fa-question">we need money</p></a></li>
+        <li><a href="#"><p class="fas fa-sliders-h">plsplsplspls</p></a></li>
+      </ul>
 
-</body>
+
+    </div>
+
+
+##########################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
