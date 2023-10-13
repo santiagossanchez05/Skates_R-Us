@@ -1,0 +1,599 @@
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+    
+<style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Rubik", sans-serif;
+      text-decoration: none;
+    }
+    .everything{
+        padding-left: 260px;
+        padding-top: 40px;
+    }
+    .post{
+        padding-left: 260px;
+        padding-top: 40px;
+    }
+    body{
+      min-height: 100vh;
+      background-color: #ffffff;
+    
+    }
+    .header{
+      position: fixed;
+      top: 0px;
+      left: 0;
+      width: 100%;
+      padding: 20px 100px;
+      background: seagreen;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .logo{
+      font-size: 32px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .navbar a{
+      position:relative;
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 40px;
+    }
+    .navbar a::before{
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #fff;
+      transition: .3s;
+    }
+    .navbar a:hover::before{
+      width: 100%;
+    }
+    
+    .sidebar{
+      z-index: 99;
+      padding-top: 55px;
+      position: fixed;
+      left: 0px;
+      width: 250px;
+      height: 100%;
+      background: seagreen;
+    }
+    .sidebar header{
+      
+      font-size: 22px;
+      color: white;
+      text-align: center;
+      line-height: 70px;
+      background-color: #333;
+      user-select: none;
+    }
+    .sidebar ul a{
+      display: block;
+      height: 100%;
+      width: 100%;
+      line-height: 30px;
+      font-size: 20px;
+      color: white;
+      padding-left: 20px;
+      box-sizing: border-box;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      border-bottom: 1px solid black;
+      transition: .4s;
+    
+    
+    }
+    ul li:hover a{
+      padding-left: 50px;
+    }
+    .sidebar ul a i{
+      margin-right: 16px;
+    }
+    </style>
+    
+ 
+    
+    <header class="header">
+          <a href="#" class="logo">SkateSole</a>
+    
+          <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="#">about</a>
+            <a href="#">Post</a>
+            <a href="#">Account</a>
+    
+    
+          </nav>
+    
+        </header>
+        <div class="sidebar">
+          <header>Trades</header>
+          <ul>
+            <li><a href="#"><p class="fas fa-qrcode">Listings</p></a></li>
+            <li><a href="#"><p class="fas fa-link">Buy From Us</p></a></li>
+            <li><a href="#"><p class="fas fa-stream">Support us</p></a></li>
+            <li><a href="#"><p class="fas fa-calendae-week">pls</p></a></li>
+            <li><a href="#"><p class="fas fa-question">we need money</p></a></li>
+            <li><a href="#"><p class="fas fa-sliders-h">plsplsplspls</p></a></li>
+          </ul>
+          <header>Other Shii</header>
+          <ul>
+            <li><a href="#"><p class="fas fa-qrcode">Listings</p></a></li>
+            <li><a href="#"><p class="fas fa-link">Buy From Us</p></a></li>
+            <li><a href="#"><p class="fas fa-stream">Support us</p></a></li>
+            <li><a href="#"><p class="fas fa-calendae-week">pls</p></a></li>
+            <li><a href="#"><p class="fas fa-question">we need money</p></a></li>
+            <li><a href="#"><p class="fas fa-sliders-h">plsplsplspls</p></a></li>
+          </ul>
+    
+    
+        </div>
+    <title>Marketplace</title>
+    <style>
+        /* CSS styling for the listing items */
+        .listing-item {
+            border: 1px solid #ff7777;
+            padding: 10px;
+
+            margin: 10px;
+        }
+        .listing-item h3{
+            background: #77ff7e;
+        }
+        .listing-item img{
+            max-width: 120px;
+            border-radius: 20px;
+        }
+
+
+    </style>
+</head>
+<body >
+    <h1>Marketplace</h1>
+
+    //Post Your Listing Section 
+    <div class="post">
+    <h2>Post Your Listing</h2>
+    <form id="post-form" >
+        <label for="name">Listing Name:</label>
+        <input type="text" id="name" required>
+        <br>
+        <label for "description">Description:</label>
+        <textarea id="description" required></textarea>
+        <br>
+        <label for="picture">Picture:</label>
+        <input type="file" id="picture" accept="image/*" required>
+        <br>
+        <button type="submit">Post</button>
+    </form>
+    </div>
+
+    // Display Listings Section 
+    <h2>Current Listings</h2>
+    <div id="listings" class="everything">
+        // Listings will be displayed here 
+    </div>
+
+    <script>
+        // Function to handle form submission and update listings
+        document.getElementById("post-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const description = document.getElementById("description").value;
+            const picture = document.getElementById("picture").files[0];
+
+            if (name && description && picture) {
+                const newListing = {
+                    name,
+                    description,
+                    picture: URL.createObjectURL(picture),
+                };
+
+                const existingListings = JSON.parse(localStorage.getItem("listings")) || [];
+                existingListings.push(newListing);
+                localStorage.setItem("listings", JSON.stringify(existingListings));
+
+                // Clear the form
+                document.getElementById("name").value = "";
+                document.getElementById("description").value = "";
+                document.getElementById("picture").value = "";
+
+                // Call the function to display listings to update the list
+                displayListings();
+            }
+        });
+
+        // Function to display listings
+        function displayListings() {
+            const listings = JSON.parse(localStorage.getItem("listings")) || [];
+            const listingsContainer = document.getElementById("listings");
+            listingsContainer.innerHTML = "";
+
+            listings.forEach((listing) => {
+                const listingDiv = document.createElement("div");
+                listingDiv.className = "listing-item"; // Add the CSS class to the element
+                listingDiv.innerHTML = `
+                    <h3>${listing.name}</h3>
+                    <p>${listing.description}</p>
+                    <img src="${listing.picture}" alt="${listing.name}">
+                    <button class="more-details-button">More Details</button>
+                `;
+                listingsContainer.appendChild(listingDiv);
+            });
+        }
+
+        // Call the function to display listings when the page loads
+        displayListings();
+    </script>
+</body>
+</html>-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="marketplace3.css" />
+
+<!---
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Rubik", sans-serif;
+          text-decoration: none;
+        }
+
+        body{
+          min-height: 100vh;
+          background-color: #ffffff;
+        
+        }
+        .header{
+          position: fixed;
+          top: 0px;
+          left: 0;
+          width: 100%;
+          padding: 20px 100px;
+          background: seagreen;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 100;
+        }
+        .logo{
+          font-size: 32px;
+          color: white;
+          text-decoration: none;
+          font-weight: 700;
+        }
+        .navbar a{
+          position:relative;
+          font-size: 18px;
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          margin-left: 40px;
+        }
+        .navbar a::before{
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: #fff;
+          transition: .3s;
+        }
+        .navbar a:hover::before{
+          width: 100%;
+        }
+        
+        .sidebar{
+          z-index: 99;
+          padding-top: 55px;
+          position: fixed;
+          left: 0px;
+          width: 250px;
+          height: 100%;
+          background: seagreen;
+        }
+        .sidebar header{
+          
+          font-size: 22px;
+          color: white;
+          text-align: center;
+          line-height: 70px;
+          background-color: #333;
+          user-select: none;
+        }
+        .sidebar ul a{
+          display: block;
+          height: 100%;
+          width: 100%;
+          line-height: 30px;
+          font-size: 20px;
+          color: white;
+          padding-left: 20px;
+          box-sizing: border-box;
+          border-top: 1px solid rgba(255, 255, 255, .1);
+          border-bottom: 1px solid black;
+          transition: .4s;
+        
+        
+        }
+        ul li:hover a{
+          padding-left: 50px;
+        }
+        .sidebar ul a i{
+          margin-right: 16px;
+        }
+        </style>
+        
+     
+        
+        <header class="header">
+              <a href="#" class="logo">SkateSole</a>
+        
+              <nav class="navbar">
+                <a href="#">Home</a>
+                <a href="#">about</a>
+                <a href="#">Post</a>
+                <a href="#">Account</a>
+        
+        
+              </nav>
+        
+            </header>
+            <div class="sidebar">
+              <header>Trades</header>
+              <ul>
+                <li><a href="#"><p>Listings</p></a></li>
+                <li><a href="#"><p>Buy From Us</p></a></li>
+                <li><a href="#"><p>Support us</p></a></li>
+                <li><a href="#"><p>pls</p></a></li>
+                <li><a href="#"><p>we need money</p></a></li>
+                <li><a href="#"><p>plsplsplspls</p></a></li>
+              </ul>
+              <header>Other Shii</header>
+              <ul>
+                <li><a href="#"><p class="fas fa-qrcode">Listings</p></a></li>
+                <li><a href="#"><p class="fas fa-link">Buy From Us</p></a></li>
+                <li><a href="#"><p class="fas fa-stream">Support us</p></a></li>
+                <li><a href="#"><p class="fas fa-calendae-week">pls</p></a></li>
+                <li><a href="#"><p class="fas fa-question">we need money</p></a></li>
+                <li><a href="#"><p class="fas fa-sliders-h">plsplsplspls</p></a></li>
+              </ul>
+        
+        
+            </div>
+    <title>Marketplace</title>
+    <style>
+        /* CSS styling for the listing items */
+        .listing-item {
+            border: 1px solid #ff7777;
+            padding: 10px;
+
+            margin: 10px;
+        }
+        .listing-item h3{
+            background: #77ff7e;
+        }
+        .listing-item img{
+            max-width: 120px;
+            border-radius: 20px;
+        }
+        .everything{
+        padding-left: 260px;
+        padding-top: 40px;
+    }
+        .post{
+        padding-left: 260px;
+        padding-top: 40px;
+        }
+    </style>
+    
+</head>-->
+<body>
+    <style>
+    
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Rubik", sans-serif;
+          text-decoration: none;
+        }
+        
+        body{
+          min-height: 100vh;
+          background-color: #ffffff;
+        
+        }
+        .header{
+          position: fixed;
+          top: 0px;
+          left: 0;
+          width: 100%;
+          padding: 20px 100px;
+          background: seagreen;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 100;
+        }
+        .logo{
+          font-size: 32px;
+          color: white;
+          text-decoration: none;
+          font-weight: 700;
+        }
+        .navbar a{
+          position:relative;
+          font-size: 18px;
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          margin-left: 40px;
+        }
+        .navbar a::before{
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: #fff;
+          transition: .3s;
+        }
+        .navbar a:hover::before{
+          width: 100%;
+        }
+        
+        .sidebar{
+          z-index: 99;
+          padding-top: 55px;
+          position: fixed;
+          left: 0px;
+          width: 250px;
+          height: 100%;
+          background: seagreen;
+        }
+        .sidebar header{
+          
+          font-size: 22px;
+          color: white;
+          text-align: center;
+          line-height: 70px;
+          background-color: #333;
+          user-select: none;
+        }
+        .sidebar ul a{
+          display: block;
+          height: 100%;
+          width: 100%;
+          line-height: 30px;
+          font-size: 20px;
+          color: white;
+          padding-left: 20px;
+          box-sizing: border-box;
+          border-top: 1px solid rgba(255, 255, 255, .1);
+          border-bottom: 1px solid black;
+          transition: .4s;
+        
+        
+        }
+        ul li:hover a{
+          padding-left: 50px;
+        }
+        .sidebar ul a i{
+          margin-right: 16px;
+        }
+        #check{
+          display: none;
+        }
+        label #btn, label #cancel{
+          position: absolute;
+          cursor: pointer;
+          background: #333;
+          border-radius: 3px;
+        
+        }
+        label #btn{
+          height: 10px;
+          width: 10px;
+          left: 40px;
+          top: 25px;
+          font-size: 500px;
+          color: red;
+          padding: 6px 12px;
+        }
+        label #cancel{
+          z-index: 1111;
+          left: 195px;
+          top: 17px;
+        
+          font-size:30px;
+          color: #000;
+          padding: 4px 9px;
+        }
+        
+        
+        
+        </style> 
+    <header class="header">
+        <a href="#" class="logo">SkateSole</a>
+  
+        <nav class="navbar">
+          <a href="homePage.htm">Home</a>
+          <a href="#">About</a>
+          <a href="post.htm">Post</a>
+          <a href="users/login.htm">Account</a>
+  
+  
+        </nav>
+  
+      </header>
+
+
+
+    <h1>Marketplace</h1>
+<div class="everythingg">
+
+    <!-- Display Listings Section -->
+
+    <div class="jobs-list-container">
+        <h2>Listings</h2><br>
+  
+        <input class="job-search" type="text" placeholder="Search here..." />
+  
+        <div class="jobs"></div>
+      </div>
+
+
+    <div id="listings" class="everything">
+        
+        <!-- Listings will be displayed here -->
+    </div>
+
+    <script>
+        // Function to display listings
+        function displayListings() {
+            const listings = JSON.parse(localStorage.getItem("listings")) || [];
+            const listingsContainer = document.getElementById("listings");
+            listingsContainer.innerHTML = "";
+
+            listings.forEach((listing) => {
+                const listingDiv = document.createElement("div");
+                listingDiv.className = "listing-item"; // Add the CSS class to the element
+                listingDiv.innerHTML = `
+                    <h3>${listing.name}</h3>
+                    <img src="${listing.picture}" alt="${listing.name}" >
+                    <p>${listing.description}</p>
+                    <a href="product.htm" class="details" >More Details</a>
+                `;
+                listingsContainer.appendChild(listingDiv);
+            });
+        }
+
+        // Call the function to display listings when the page loads
+        displayListings();
+    </script>
+    </div>
+</body>
+</html>

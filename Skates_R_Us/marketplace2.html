@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="marketplace2.css" />
+    <script src="https://kit.fontawesome.com/yourcode.js"></script>
+
+  </head>
+
+  <body>
+
+    <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars id=btn"></i>
+      <i class="fas fa-times id=cancel"></i>
+
+
+    </label>
+
+    <header class="header">
+      <a href="#" class="logo">SkateSole</a>
+
+      <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="post.htm">Post</a>
+        <a href="#">Account</a>
+
+
+      </nav>
+
+    </header>
+    <div class="sidebar">
+      <header>Trades</header>
+      <ul>
+        <li><a href="#"><p class="fas fa-qrcode">Listings</p></a></li>
+        <li><a href="#"><p class="fas fa-link">Buy From Us</p></a></li>
+        <li><a href="#"><p class="fas fa-stream">Support us</p></a></li>
+        <li><a href="#"><p class="fas fa-calendae-week">pls</p></a></li>
+        <li><a href="#"><p class="fas fa-question">we need money</p></a></li>
+        <li><a href="#"><p class="fas fa-sliders-h">plsplsplspls</p></a></li>
+      </ul>
+      <header>Other Shii</header>
+      <ul>
+        <li><a href="#"><p class="fas fa-qrcode">Listings</p></a></li>
+        <li><a href="#"><p class="fas fa-link">Buy From Us</p></a></li>
+        <li><a href="#"><p class="fas fa-stream">Support us</p></a></li>
+        <li><a href="#"><p class="fas fa-calendae-week">pls</p></a></li>
+        <li><a href="#"><p class="fas fa-question">we need money</p></a></li>
+        <li><a href="#"><p class="fas fa-sliders-h">plsplsplspls</p></a></li>
+      </ul>
+
+
+    </div>
+
+    <div class="jobs-list-container">
+      <h2>Listings</h2><br>
+
+      <input class="job-search" type="text" placeholder="Search here..." />
+
+      <div class="jobs"></div>
+    </div>
+    <div id="listings">
+      <!-- Listings will be displayed here -->
+  </div>
+  <script src="marketplace2.js"></script>
+  <script>
+      // Function to display listings  
+      function displayListings() {
+          const listings = JSON.parse(localStorage.getItem("listings")) || [];
+
+          const listingsContainer = document.getElementById("listings");
+
+          listingsContainer.innerHTML = "";
+
+          listings.forEach((listing) => {
+              const listingDiv = document.createElement("div");
+              listingDiv.innerHTML = `
+                  <h2>${listing.name}</h2>
+                  <p>${listing.description}</p>
+                  <img src="${listing.picture}" alt="${listing.name}">
+              `;
+              listingsContainer.appendChild(listingDiv);
+          });
+      }
+
+      // Call the function to display listings when the page loads
+      displayListings();
+  </script>
+    <script src="marketplace2.js"></script>
+  </body>
+</html>
