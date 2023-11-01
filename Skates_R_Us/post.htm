@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="post.css" />
+<link rel="icon" href="images/browserimg (1).png">
+
+
+<html>
+<head>
+
+    <header class="header">
+        <img src="images/Copy of Untitled.png" alt="My Image" class="logo" >
+  
+        <!--<a href="#" class="logo">SkateSole</a>-->
+  
+        <nav class="navbar">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="post.htm">Post</a>
+          <a href="#">Account</a>
+  
+  
+        </nav>
+  
+      </header>
+    <title>Post Your Listing</title>
+</head>
+<body>
+    <h1>Post Your Listing</h1>
+    <form id="post-form" class="post">
+        <label for="name" class="list-text">Listing Name:</label>
+        <br>
+        <input type="text" id="name" class="input" required>
+        <br>
+        <label for="description" class="list-text">Description:</label>
+        <br>
+        <textarea id="description" required class="input"></textarea>
+        <br>
+        <label for="picture" class="list-text">Picture:</label>
+        <br>
+        <input type="file" id="picture" accept="image/*" class="inputimg" required>
+        <br>
+        <button type="submit" class="button">Post</button>
+    </form>
+    <script>
+        // Function to handle form submission
+        document.getElementById("post-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const description = document.getElementById("description").value;
+            const picture = document.getElementById("picture").files[0];
+
+            if (name && description && picture) {
+                const newListing = {
+                    name,
+                    description,
+                    picture: URL.createObjectURL(picture),
+                };
+
+                const existingListings = JSON.parse(localStorage.getItem("listings")) || [];
+                existingListings.push(newListing);
+                localStorage.setItem("listings", JSON.stringify(existingListings));
+
+                // Clear the form
+                document.getElementById("name").value = "";
+                document.getElementById("description").value = "";
+                document.getElementById("picture").value = "";
+
+                alert("Listing posted successfully!"); // You can customize this feedback
+            }
+        });
+    </script>
+</body>
+</html>
