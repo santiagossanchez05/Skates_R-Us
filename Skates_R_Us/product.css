@@ -1,3 +1,4 @@
+
 .btn{
     display: inline-block;
     background: #008CBA;
@@ -14,19 +15,17 @@
       float: left;
       margin-top: 20px;
   }
+  .exp{
+    visibility: hidden;
+  }
 .navbar{
     display: flex;
     align-items: center;
     padding: 10px;
+    
   }
-  nav{
-    flex: 1;
-    text-align: right;
-  }
-  nav ul{
-    display: inline-block;
-    list-style-type: none;
-  }
+
+
   nav ul li{
     display: inline-block;
     text-align: left;
@@ -42,7 +41,8 @@
     padding-right: 25px;
   }
   .categories{
-    margin: 70px 0;
+    margin: 70px 20px;
+    
   }
 
  
@@ -52,12 +52,14 @@
   .row{
     display: flex;
   }
+
   .small-container{
     max-width: 200px;
     margin: center;
     padding-left: 25px;
     padding-right: 25px;
   }
+ 
   .imgbg{
     border-radius: 50%;
   object-fit: cover;
@@ -71,11 +73,10 @@
     padding-top: 5px;
     
       min-width: 500px;
-      min-height: 200px;
-      margin-bottom: 50px;
-      
-  }    
+      min-height: 20px;
+      margin-bottom: 0px;
 
+  }   
 
   .col-4{
     flex-basis: 100%;
@@ -83,19 +84,31 @@
     min-width: 200px;
     margin-bottom: 0px;
     transition: transform 0.5s;
-    
-  
   }
+
  
   .col-4:hover{
     transform: translateY(-5px);
   }
   .widthSet{
     max-height: 2000px;
+    
+  }
+  .widthSet2{
+    max-height: 200px;
+    max-width: 200px;
+    object-fit: cover;
   }
   .col-4 img{
-    width: 100%;
-    object-fit: cover
+    width: 1000%;
+    object-fit: cover;
+    
+  }
+  .col-5 img{
+    max-height: 200px;
+    object-fit: cover;
+    width: 200%;
+    
   }
   
   .single-product{
@@ -105,16 +118,17 @@
     padding: 0;
     size: 1000px;
   }
+
   .single-product .col-2 {
     padding: 20px;
   }
   .single-product h4{
-    padding: 40px;
+    padding: 20px;
     margin: 0px;
     font-size: 22px;
     font-weight: bold;
     position: relative;
-    bottom: -55px;
+    bottom: -45px;
     left: -235px
   }
   .single-product select{
@@ -130,3 +144,59 @@
     margin-right: 10px;
     border: 1px solid;
   }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+    text-decoration: none;
+  }
+  
+  body{
+    min-height: 100vh;
+    background-color: #ffffff;
+  
+  }
+  .header1{
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    padding: 0px 0px;
+    background: rgb(36, 105, 66);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+  .logo{
+    font-size: 32px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    max-width: 200px;
+    left:15px; top:0px;
+  }
+  .navbar a{
+    position:relative;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+  }
+  .navbar a::before{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+  }
+  .navbar a:hover::before{
+    width: 100%;
+  }
+  
